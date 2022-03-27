@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Money.h"
-
+#include "Account.h"
 
 int main(){
 
@@ -23,6 +23,21 @@ int main(){
 	std::cout << (mymoney > hismoney) << std::endl;
 
 	//Program
+
+	Account account(Money(300,23));
+
+	std::cout << account << std::endl;
+
+	account.makeDeposit(Money(200,00));
+	account.makeDeposit(Money(300,24));
+	account.makeDeposit(Money(501,22));
+
+	std::cout << account << std::endl;
+
+	account.makeWithdrawl(Money(300,10));
+	account.makeWithdrawl(Money(201,34));
+
+	std::cout << account << std::endl;
 
 	return 0;
 }
