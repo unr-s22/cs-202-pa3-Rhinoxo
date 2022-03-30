@@ -4,11 +4,6 @@
 void Account::makeDeposit(Money money){
     deposit.push_back(money);
     flag = 1;
-
-    //find index if vector to find most recent deposit
-    /*for(int index=0; index > deposit.size(); index++) {
-        std::cout << "(" << index << ")" << deposit[index] << std::endl;
-    }*/
 }
 
 void Account::makeWithdrawals(Money money){
@@ -16,23 +11,30 @@ void Account::makeWithdrawals(Money money){
     flag = 1;
 }
 
-Money Account::calcBalance(Money money){
+Money Account::calcBalance(){
     if (flag==1) {
-        auto totalDeposit = std::accumulate(deposit.begin(),deposit.end(), money);
-        auto totalWithdrawal = std::accumulate(withdrawal.begin(),withdrawal.end(),money);
-        auto money = totalDeposit - totalWithdrawal;
-
-        //iffy about
-        std::cout<<"Account Details"<< "\n--------------------------" << "\nCurrent Balance: " << money << std::endl; 
-        std::cout << "\n--------------------------" << "\nNumber of Deposits: " << deposit.size();
-        std::cout << "--------------------" << "\n(1) " << "$100.83" /*placeholder for deposit*/ << std::endl;
-        std::cout << "\n--------------------------" << "\nNumber of Withdrawals: " << withdrawal.size();
-        std::cout << "\n--------------------------" << "\n(1) " << "$200.44" /*placeholder for withdrawals*/ << std::endl;
-        flag=0;
+        Money totalDeposit = std::accumulate(deposit.begin(),deposit.end(), money);
+        Money totalWithdrawal = std::accumulate(withdrawal.begin(),withdrawal.end(),money);
+        Money finalBalance = initBalance - (totalDeposit - totalWithdrawal);
 
     }
     else {
         flag=0;
-        return money;
+        return;
     }
+}
+
+void numExchange(const vector<int> &vect) {
+     for(int i=0; i < vect.size(); i++) {
+        os << "("<<i++<< ")"<<vect[i] << std::endl;
+    }
+}
+
+friend std::ostream& operator<< (std::ostream& os, const Account& acc) {
+    std::cout<<"Account Details"<< "\n--------------------------" << "\nCurrent Balance: " << acc.calcBalance(); << std::endl; 
+    std::cout << "\n--------------------------" << "\nNumber of Deposits: " << acc.deposit.size();
+    std::cout << "--------------------" << std::endl;
+    std::cout << numExchange(deposit);
+    std::cout << "\n--------------------------" << "\nNumber of Withdrawals: " << acc.withdrawal.size();
+    std::cout << "\n--------------------------" << "\n(1) " << 
 }

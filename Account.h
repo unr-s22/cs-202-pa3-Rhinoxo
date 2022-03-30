@@ -9,16 +9,17 @@ class Account: public Money{
 
     std::vector<Money> deposit;
     std::vector<Money> withdrawal;
-
+    
+    Money initBalance = 0;
     bool flag = 0;
-     int finalBalance = 0;
-
 
 public:
     Account(int dollars, int cents): Money(dollars, cents){}
     void makeDeposit(Money money);
     void makeWithdrawals(Money money);
-    Money calcBalance(Money money);
+    Money calcBalance();
+    friend std::ostream& operator<< (std::ostream& os, const Account& acc); 
+    void numExchange(const vector<int> &vect);
 
 };
 
