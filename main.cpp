@@ -26,17 +26,20 @@ int main(){
 
 	Account account(Money(300,23));
 
+	account.calcBalance();
 	std::cout << account << std::endl;
 
 	account.makeDeposit(Money(200,00));
 	account.makeDeposit(Money(300,24));
 	account.makeDeposit(Money(501,22));
 
+	account.calcBalance();
 	std::cout << account << std::endl;
 
-	account.makeWithdrawl(Money(300,10));
-	account.makeWithdrawl(Money(201,34));
+	account.makeWithdrawals(Money(300,10));
+	account.makeWithdrawals(Money(201,34));
 
+	account.calcBalance();
 	std::cout << account << std::endl;
 
 	return 0;

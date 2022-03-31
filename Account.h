@@ -5,21 +5,22 @@
 #include <vector>
 #include "Money.h"
 
-class Account: public Money{
+class Account{
 
     std::vector<Money> deposit;
     std::vector<Money> withdrawal;
     
-    Money initBalance = 0;
+    Money initBalance;
+    Money finalBalance;
     bool flag = 0;
 
 public:
-    Account(int dollars, int cents): Money(dollars, cents){}
+    Account(Money money);
     void makeDeposit(Money money);
     void makeWithdrawals(Money money);
-    Money calcBalance();
+    void calcBalance();
     friend std::ostream& operator<< (std::ostream& os, const Account& acc); 
-    void numExchange(const vector<int> &vect);
+    void numExchange(const std::vector<int> &vect);
 
 };
 
